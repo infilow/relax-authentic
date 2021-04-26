@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="twitter:card" content="summary"/>
+	<meta name="twitter:creator" content="@infilos"/>
+	<meta property="og:title" content="Relax Authentic"/>
+	<title>Relax Authentic</title>
+	<meta
+			property="og:description"
+			content="Relax Authentic is a authenticate & authorize toolkit."
+	/>
+	<link
+			rel="stylesheet"
+			href="https://unpkg.com/@egoist/docup@2/dist/docup.min.css"
+	/>
+	<style>
+		.content h2 {
+			font-size: 2rem;
+			font-weight: 700;
+			@apply my-8;
+		}
+		
+		.content h3 {
+			@apply font-normal;
+			font-size: 1.5rem;
+		}
+		
+		.content h4 {
+			font-size: 1.1rem;
+		}
+		
+		.content h5 {
+			font-size: 0.8rem;
+		}
+		
+		.content h6 {
+			font-size: 0.6rem;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="module">
+	import * as docup from "https://unpkg.com/@egoist/docup@2/dist/docup.min.js"
+	
+	docup.init({
+		title: 'Relax Authentic',
+		highlightLanguages: ['java'],
+		props: {
+			langs: [],
+		},
+		navLinks: [
+			{
+				text: '认证',
+				link: '#用户认证',
+			},
+			{
+				text: '鉴权',
+				link: '#用户鉴权',
+			},
+			{
+				text: '管理',
+				link: '#登录管理',
+			},
+			{
+				text: '审计',
+				link: '#用户审计',
+			},
+			{
+				text: '示例',
+				link: '#应用示例',
+			},
+			{
+				text: 'GitHub',
+				link: 'https://github.com/egoist/docup',
+			},
+			{
+				text: "Guide",
+				link: "/guide",
+			},
+		]
+	})
+</script>
+</body>
+</html>
