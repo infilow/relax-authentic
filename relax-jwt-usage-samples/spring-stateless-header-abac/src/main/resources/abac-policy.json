@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Admin",
+    "descr": "Admin can do all.",
+    "matcher": "profile.roles.contains('ADMIN')",
+    "verifier": "true"
+  },
+  {
+    "name": "PM view his project",
+    "descr": "PM read the details of his project only.",
+    "matcher": "profile.roles.contains('PM') && action == 'PROJECTS_VIEW'",
+    "verifier": "profile.project.id == resource.id"
+  },
+  {
+    "name": "PM view his project's issues",
+    "descr": "PM can view the issues of his project only.",
+    "matcher": "profile.roles.contains('PM')  && action == 'ISSUES_LIST'",
+    "verifier": "profile.project.id == resource.id"
+  },
+  {
+    "name": "PM manages project's users",
+    "descr": "PM can manage users of his project only.",
+    "matcher": "profile.roles.contains('PM') && {'PROJECTS_USERS_ADD','PROJECTS_USERS_LIST','PROJECTS_USERS_REMOVE'}.contains(action)",
+    "verifier": "profile.project.id == resource.id"
+  },
+  {
+    "name": "PM manages project's issues ",
+    "descr": "PM can manage issues of his project only.",
+    "matcher": "profile.roles.contains('PM') && {'ISSUES_CREATE', 'ISSUES_UPDATE', 'ISSUES_DELTE', 'ISSUES_ASSIGN', 'ISSUES_STATUS_CLOSE'}.contains(action)",
+    "verifier": "profile.project.id == resource.project.id"
+  },
+  {
+    "name": "PM creates an issue",
+    "descr": "PM can add new issues to his project only.",
+    "matcher": "profile.roles.contains('PM') && action == 'ISSUES_CREATE'",
+    "verifier": "profile.project.id == resource.project.id"
+  },
+  {
+    "name": "PM assigns issues",
+    "descr": "PM can assign an issue (in his project only) to a user.",
+    "matcher": "profile.roles.contains('PM') && action == 'ISSUES_ASSIGN'",
+    "verifier": "profile.project.id == resource.project.id"
+  },
+  {
+    "name": "Tester creates a bug",
+    "descr": "Tester can add bugs (and only bugs) to his project",
+    "matcher": "profile.roles.contains('TESTER') && action == 'ISSUES_CREATE'",
+    "verifier": "profile.project.id == resource.project.id && resource.type.name() == 'BUG'"
+  },
+  {
+    "name": "User completes an issue",
+    "descr": "Users can compelete issues assigned to them.",
+    "matcher": "action == 'ISSUES_STATUS_CLOSE'",
+    "verifier": "profile.project.id == resource.project.id && profile.name == resource.assignedTo"
+  }
+]

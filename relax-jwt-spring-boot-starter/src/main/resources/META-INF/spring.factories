@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.infilos.auth.AuthConfigAutoConfigure,\
+  com.infilos.auth.AuthInterceptorAutoConfigure,\
+  com.infilos.auth.AuthAspectAutoConfigure

@@ -1,0 +1,23 @@
+relax.jwt:
+  intercept-mode: spring_mvc
+  token-locates: cookie
+  stateless: false
+  session: true
+  token-salt: ded4a7dc78674c6bb8ad15ffb1d4f973
+  token-expire: PT10H
+  login-path: /login
+  logout-path: /logout
+  exclude-path:
+    - /auth/login
+    - /error
+    - /favicon.ico
+  matcher-names: csrfToken
+  authorizer-names: csrfCheck
+
+spring:
+  thymeleaf:
+    cache: false
+logging:
+  level:
+    org.pac4j: debug
+    com.infilos.auth: debug 

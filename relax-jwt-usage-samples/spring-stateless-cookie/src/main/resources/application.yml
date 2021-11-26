@@ -1,0 +1,12 @@
+relax.jwt:
+  login-path: /login
+  logout-path: /logout
+  matcher-names: xssprotection
+  exclude-path:
+    - /favicon.ico
+  token-locates: cookie
+
+logging:
+  level:
+    org.pac4j: debug
+    com.infilos.auth: debug 

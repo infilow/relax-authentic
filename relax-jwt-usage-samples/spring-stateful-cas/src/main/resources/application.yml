@@ -1,0 +1,22 @@
+relax.jwt:
+  filter: interceptor
+  stateless: false
+  session: true
+  token-locates: cookie
+  token-salt: c7e49600a5b144e48965e8b0b78ff41c
+  token-expire: PT30M
+  login-path: /login
+  logout-path: /logout
+  outer-login-path: /sf
+  outer-callback-path: /callback
+  exclude-path:
+    - /error
+    - /favicon.ico
+
+spring:
+  thymeleaf:
+    cache: false
+logging:
+  level:
+    org.pac4j: debug
+    com.infilos.auth: debug 

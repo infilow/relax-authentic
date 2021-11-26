@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.infilos.abac.config.AbacAspectAutoConfigure,\
+  com.infilos.abac.config.AbacConfigAutoConfigure
