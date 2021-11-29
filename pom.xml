@@ -5,15 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.infilos</groupId>
-    <artifactId>relax-auth-token</artifactId>
+    <artifactId>relax-authentic</artifactId>
     <packaging>pom</packaging>
     <version>0.1.0</version>
     
     <modules>
-        <module>relax-jwt-core</module>
-        <module>relax-jwt-spring-boot-starter</module>
+        <module>relax-auth-core</module>
+        <module>relax-auth-spring-boot-starter</module>
         <module>relax-abac-spring-boot-starter</module>
-        <module>relax-jwt-usage-samples</module>
+        <module>relax-auth-usage-samples</module>
     </modules>
 
     <properties>

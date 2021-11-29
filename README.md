@@ -1,6 +1,6 @@
-# relax-auth-token
+# Relax Authentic
 
-Quickly implement JWT with spring-boot & pac4j.
+JWT based authentication & ABAC based authorization with spring-boot & pac4j.
 
 ## Mark Controller
 
@@ -42,7 +42,4 @@ mvn versions:set -DnewVersion=0.1.0 -DprocessAllModules -DgenerateBackupPoms=fal
 
 2. publish artifact
 
-## RBAC
 
-1. 从 Spring 上下文获得所有接口定义，method + path + params，得到 Resource 列表
-2. 
