@@ -42,4 +42,3 @@ mvn versions:set -DnewVersion=0.1.0 -DprocessAllModules -DgenerateBackupPoms=fal
 
 2. publish artifact
 
-
