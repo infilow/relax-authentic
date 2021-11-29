@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>com.infilos</groupId>
-            <artifactId>relax-jwt-spring-boot-starter</artifactId>
+            <artifactId>relax-auth-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
