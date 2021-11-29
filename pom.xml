@@ -8,7 +8,7 @@
     <artifactId>relax-authentic</artifactId>
     <packaging>pom</packaging>
     <version>0.2.0</version>
-    
+
     <modules>
         <module>relax-auth-core</module>
         <module>relax-auth-spring-boot-starter</module>
@@ -188,6 +188,15 @@
                         <groupId>org.jreleaser</groupId>
                         <artifactId>jreleaser-maven-plugin</artifactId>
                         <version>0.8.0</version>
+                        <configuration>
+                            <jreleaser>
+                                <release>
+                                    <github>
+                                        <overwrite>true</overwrite>
+                                    </github>
+                                </release>
+                            </jreleaser>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
