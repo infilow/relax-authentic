@@ -7,7 +7,7 @@
     <groupId>com.infilos</groupId>
     <artifactId>relax-authentic</artifactId>
     <packaging>pom</packaging>
-    <version>0.4.0</version>
+    <version>0.5.0</version>
 
     <modules>
         <module>relax-auth-core</module>
@@ -23,7 +23,7 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.boot.version>2.7.0</spring.boot.version>
-        <pac4j.version>4.5.1</pac4j.version>
+        <pac4j.version>4.5.6</pac4j.version>
     </properties>
 
     <dependencyManagement>
@@ -41,6 +41,11 @@
                 <version>${pac4j.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>3.0.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
