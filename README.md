@@ -37,7 +37,7 @@ class BizController {
 1. update version
 
 ```bash
-mvn versions:set -DnewVersion=0.6.0 -DprocessAllModules -DgenerateBackupPoms=false versions:commit
+mvn versions:set -DnewVersion=0.7.0 -DprocessAllModules -DgenerateBackupPoms=false versions:commit
 ```
 
 2. publish artifact

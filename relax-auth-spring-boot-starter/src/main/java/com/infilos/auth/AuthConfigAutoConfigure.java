@@ -123,7 +123,7 @@ public class AuthConfigAutoConfigure {
             properties.getExcludeBranch().forEach(securityPathMatcher::excludeBranch);
         }
         if (!CollectionUtils.isEmpty(properties.getExcludeRegex())) {
-            properties.getExcludeBranch().forEach(securityPathMatcher::excludeRegex);
+            properties.getExcludeRegex().forEach(securityPathMatcher::excludeRegex);
         }
         if (authorityConfig.getLoginPath() != null) {
             securityPathMatcher.excludePath(authorityConfig.getLoginPath());
