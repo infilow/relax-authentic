@@ -12,6 +12,7 @@ import org.springframework.expression.Expression;
 import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -46,16 +47,16 @@ public class JsonPolicyRepository implements PolicyRepository {
         try {
             log.debug("Checking ABAC policy file at: {}", policyFilePath);
 
-            String filePath = policyFilePath.startsWith("/") ? policyFilePath : "/" + policyFilePath;
-            URL fileUrl = this.getClass().getResource(filePath);
-            if (Objects.isNull(fileUrl)) {
+            String filePath = policyFilePath.startsWith("classpath:") ? policyFilePath : "classpath:" + policyFilePath;
+            File file = ResourceUtils.getFile(filePath);
+            if (!file.exists()) {
                 log.error("Load ABAC Policy failed: file not exists");
                 return;
             }
 
             log.info("Loading ABAC policy from custom file: {}", policyFilePath);
 
-            List<PolicyRule> rules = objectMapper.readValue(ResourceUtils.getFile(fileUrl), new TypeReference<List<PolicyRule>>() {
+            List<PolicyRule> rules = objectMapper.readValue(file, new TypeReference<List<PolicyRule>>() {
             });
             if (Objects.nonNull(rules)) {
                 policyRules.addAll(rules);
