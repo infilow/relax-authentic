@@ -9,13 +9,13 @@ import com.infilos.abac.api.PolicyRule;
 import com.infilos.abac.core.spel.SpelDeserializer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.expression.Expression;
-import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.*;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 // TODO: watch file change and reload
 @Slf4j
@@ -47,25 +47,21 @@ public class JsonPolicyRepository implements PolicyRepository {
         try {
             log.debug("Checking ABAC policy file at: {}", policyFilePath);
 
-            String filePath = policyFilePath.startsWith("classpath:") ? policyFilePath : "classpath:" + policyFilePath;
-            File file = ResourceUtils.getFile(filePath);
-            if (!file.exists()) {
-                log.error("Load ABAC Policy failed: file not exists");
-                return;
-            }
+            String filePath = policyFilePath.startsWith("/") ? policyFilePath : "/" + policyFilePath;
+            try (InputStream inputStream = JsonPolicyRepository.class.getResourceAsStream(filePath)) {
+                log.info("Loading ABAC policy from custom file: {}", policyFilePath);
 
-            log.info("Loading ABAC policy from custom file: {}", policyFilePath);
+                List<PolicyRule> rules = objectMapper.readValue(inputStream, new TypeReference<List<PolicyRule>>() {
+                });
+                if (Objects.nonNull(rules)) {
+                    policyRules.addAll(rules);
+                }
 
-            List<PolicyRule> rules = objectMapper.readValue(file, new TypeReference<List<PolicyRule>>() {
-            });
-            if (Objects.nonNull(rules)) {
-                policyRules.addAll(rules);
-            }
-
-            if (rules.isEmpty()) {
-                log.warn("Load ABAC Policy succed: empty.");
-            } else {
-                log.info("Load ABAC Policy succed: " + rules.size());
+                if (rules.isEmpty()) {
+                    log.warn("Load ABAC Policy succed: empty.");
+                } else {
+                    log.info("Load ABAC Policy succed: " + rules.size());
+                }
             }
         } catch (JsonMappingException e) {
             log.error("An error occurred while parsing the ABAC policy file.", e);
